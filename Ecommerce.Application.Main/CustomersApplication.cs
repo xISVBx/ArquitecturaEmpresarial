@@ -13,10 +13,12 @@ namespace Ecommerce.Application.Main
     {
         private readonly ICustomersDomain _customersDomain;
         private readonly IMapper _mapper;
-        public CustomersApplication(ICustomersDomain customersDomain, IMapper mapper)
+        private readonly IAppLogger<CustomersApplication> _logger;
+        public CustomersApplication(ICustomersDomain customersDomain, IMapper mapper, IAppLogger<CustomersApplication> logger)
         {
             _mapper = mapper;
             _customersDomain = customersDomain;
+            _logger = logger;
         }
         #region Metodos Sincronos
         public Response<bool> Insert(CustomersDto customerDto)
@@ -107,6 +109,7 @@ namespace Ecommerce.Application.Main
                 {
                     response.IsSucces = true;
                     response.Message = "Consulta Exitosa!!!";
+                    _logger.LogInformation("Consulta Exitosa!!!");
                 }
             }
             catch (Exception ex)

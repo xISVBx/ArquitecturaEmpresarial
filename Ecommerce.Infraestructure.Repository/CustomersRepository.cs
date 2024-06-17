@@ -19,7 +19,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerInsert";
+                var query = "CustomersInsert";
                 var parameters = new DynamicParameters();
                 parameters.Add("@CustomerId", customer.CustomerId);
                 parameters.Add("@CompanyName", customer.CompanyName);
@@ -40,7 +40,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerDelete";
+                var query = "CustomersDelete";
                 var parameters = new DynamicParameters();
                 parameters.Add("@CustomerId", customerId);
                 var result = connection.Execute(query, param: parameters, commandType: CommandType.StoredProcedure);
@@ -51,7 +51,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerUpdate";
+                var query = "CustomersUpdate";
                 var parameters = new DynamicParameters();
                 parameters.Add("@CustomerId", customer.CustomerId);
                 parameters.Add("@CompanyName", customer.CompanyName);
@@ -72,7 +72,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerGetById";
+                var query = "CustomersGetById";
                 var parameters = new DynamicParameters();
                 parameters.Add("@CustomerId", customerId);
                 var result = connection.QuerySingle<Customers>(query, param: parameters, commandType: CommandType.StoredProcedure);
@@ -83,7 +83,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerList";
+                var query = "CustomersList";
                 var result = connection.Query<Customers>(query, commandType: CommandType.StoredProcedure);
                 return result;
             }
@@ -94,7 +94,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerInsert";
+                var query = "CustomersInsert";
                 var parameters = new DynamicParameters();
                 parameters.Add("@CustomerId", customer.CustomerId);
                 parameters.Add("@CompanyName", customer.CompanyName);
@@ -115,7 +115,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerDelete";
+                var query = "CustomersDelete";
                 var parameters = new DynamicParameters();
                 parameters.Add("@CustomerId", customerId);
                 var result = await connection.ExecuteAsync(query, param: parameters, commandType: CommandType.StoredProcedure);
@@ -126,7 +126,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerUpdate";
+                var query = "CustomersUpdate";
                 var parameters = new DynamicParameters();
                 parameters.Add("@CustomerId", customer.CustomerId);
                 parameters.Add("@CompanyName", customer.CompanyName);
@@ -147,7 +147,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerGetById";
+                var query = "CustomersGetById";
                 var parameters = new DynamicParameters();
                 parameters.Add("@CustomerId", customerId);
                 var result = await connection.QuerySingleAsync<Customers>(query, param: parameters, commandType: CommandType.StoredProcedure);
@@ -158,7 +158,7 @@ namespace Ecommerce.Infraestructure.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var query = "CustomerList";
+                var query = "CustomersList";
                 var result = await connection.QueryAsync<Customers>(query, commandType: CommandType.StoredProcedure);
                 return result;
             }

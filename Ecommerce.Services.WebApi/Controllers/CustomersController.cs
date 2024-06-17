@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Ecommerce.Application.DTO;
 using Ecommerce.Application.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ecommerce.Services.WebApi.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Authorize]
+    [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
@@ -15,7 +17,7 @@ namespace Ecommerce.Services.WebApi.Controllers
             _customerApplication = customerApplication;
         }
         #region Metodos Sincronos
-        [HttpPost]
+        [HttpPost("Insert")]
         public IActionResult Insert([FromBody]CustomersDto customersDto)
         {
             if(customersDto == null)
@@ -24,7 +26,7 @@ namespace Ecommerce.Services.WebApi.Controllers
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }
-        [HttpPut]
+        [HttpPut("Update")]
         public IActionResult Update([FromBody] CustomersDto customersDto)
         {
             if (customersDto == null)
@@ -33,7 +35,7 @@ namespace Ecommerce.Services.WebApi.Controllers
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }
-        [HttpDelete("{customersId}")]
+        [HttpDelete("Delete/{customersId}")]
         public IActionResult Delete(string customersId)
         {
             if (string.IsNullOrEmpty(customersId))
@@ -42,7 +44,7 @@ namespace Ecommerce.Services.WebApi.Controllers
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }
-        [HttpGet("{customersId}")]
+        [HttpGet("Get/{customersId}")]
         public IActionResult Get(string customersId)
         {
             if (string.IsNullOrEmpty(customersId))
@@ -51,7 +53,7 @@ namespace Ecommerce.Services.WebApi.Controllers
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
             var response = _customerApplication.GetAll();
@@ -60,7 +62,7 @@ namespace Ecommerce.Services.WebApi.Controllers
         }
         #endregion
         #region Metodos Asincronos
-        [HttpPost]
+        [HttpPost("InsertAsync")]
         public async Task<IActionResult> InsertAsync([FromBody] CustomersDto customersDto)
         {
             if (customersDto == null)
@@ -69,7 +71,7 @@ namespace Ecommerce.Services.WebApi.Controllers
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }
-        [HttpPut]
+        [HttpPut("UpdateAsync")]
         public async Task<IActionResult> UpdateAsync([FromBody] CustomersDto customersDto)
         {
             if (customersDto == null)
@@ -78,7 +80,7 @@ namespace Ecommerce.Services.WebApi.Controllers
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }
-        [HttpDelete("{customersId}")]
+        [HttpDelete("DeleteAsync/{customersId}")]
         public async Task<IActionResult> DeleteAsync(string customersId)
         {
             if (string.IsNullOrEmpty(customersId))
@@ -87,7 +89,7 @@ namespace Ecommerce.Services.WebApi.Controllers
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }
-        [HttpGet("{customersId}")]
+        [HttpGet("GetAsync/{customersId}")]
         public async Task<IActionResult> GetAsync(string customersId)
         {
             if (string.IsNullOrEmpty(customersId))
@@ -96,7 +98,7 @@ namespace Ecommerce.Services.WebApi.Controllers
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }
-        [HttpGet]
+        [HttpGet("GetAllAsync")]
         public async Task<IActionResult> GetAllAsync()
         {
             var response = await _customerApplication.GetAllAsync();
