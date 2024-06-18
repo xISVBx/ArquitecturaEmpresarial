@@ -37,7 +37,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Application.Main"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Services.WebApi", "Ecommerce.Services.WebApi\Ecommerce.Services.WebApi.csproj", "{A8CEB2B9-E16B-4274-BCD0-4EFA2CD51057}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Transversal.Logging", "Ecommerce.Transversal.Logging\Ecommerce.Transversal.Logging.csproj", "{2DF1BC61-1341-43D8-B8DA-BA925012F088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Transversal.Logging", "Ecommerce.Transversal.Logging\Ecommerce.Transversal.Logging.csproj", "{2DF1BC61-1341-43D8-B8DA-BA925012F088}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BA6F9FE0-F695-49D1-ACC9-2270D09DAA18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Application.Validator", "..\Ecommerce.Application.Validator\Ecommerce.Application.Validator.csproj", "{2D5088FC-C827-4021-A9B4-B7CF430C3450}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8437B525-D674-4B49-8D3C-A7BFAEF3114C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Application.Tests", "..\Ecommerce.Application.Tests\Ecommerce.Application.Tests.csproj", "{A0A37A3E-879B-4C24-9911-46DAB0A93EDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +105,18 @@ Global
 		{2DF1BC61-1341-43D8-B8DA-BA925012F088}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DF1BC61-1341-43D8-B8DA-BA925012F088}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DF1BC61-1341-43D8-B8DA-BA925012F088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6F9FE0-F695-49D1-ACC9-2270D09DAA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6F9FE0-F695-49D1-ACC9-2270D09DAA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6F9FE0-F695-49D1-ACC9-2270D09DAA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6F9FE0-F695-49D1-ACC9-2270D09DAA18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D5088FC-C827-4021-A9B4-B7CF430C3450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D5088FC-C827-4021-A9B4-B7CF430C3450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D5088FC-C827-4021-A9B4-B7CF430C3450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D5088FC-C827-4021-A9B4-B7CF430C3450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0A37A3E-879B-4C24-9911-46DAB0A93EDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0A37A3E-879B-4C24-9911-46DAB0A93EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0A37A3E-879B-4C24-9911-46DAB0A93EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0A37A3E-879B-4C24-9911-46DAB0A93EDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +135,8 @@ Global
 		{D0D6D9BA-5096-47C1-A0FC-12FA7F1903B2} = {8C34601C-629D-45E4-A795-FECACB8F71B3}
 		{A8CEB2B9-E16B-4274-BCD0-4EFA2CD51057} = {7A3EF027-765A-430D-BD9D-CF2ECFE7FF9F}
 		{2DF1BC61-1341-43D8-B8DA-BA925012F088} = {96E5F07C-73E0-41B8-A0BB-03EA6577CBAA}
+		{2D5088FC-C827-4021-A9B4-B7CF430C3450} = {8C34601C-629D-45E4-A795-FECACB8F71B3}
+		{A0A37A3E-879B-4C24-9911-46DAB0A93EDC} = {8437B525-D674-4B49-8D3C-A7BFAEF3114C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5CB1AACA-E47A-45F2-8861-96E3E1D9AB7B}
