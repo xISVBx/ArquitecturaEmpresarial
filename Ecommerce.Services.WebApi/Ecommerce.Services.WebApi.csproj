@@ -1,35 +1,45 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>6f909d0b-a871-4247-b2ff-d6b4a8d662e6</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>6f909d0b-a871-4247-b2ff-d6b4a8d662e6</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="8.0.2" />
+		<PackageReference Include="AspNetCore.HealthChecks.System" Version="8.0.1" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="8.0.1" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Core" Version="8.0.1" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="8.0.1" />
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Ecommerce.Application.DTO\Ecommerce.Application.DTO.csproj" />
-    <ProjectReference Include="..\Ecommerce.Application.Interface\Ecommerce.Application.Interface.csproj" />
-    <ProjectReference Include="..\Ecommerce.Application.Main\Ecommerce.Application.Main.csproj" />
-    <ProjectReference Include="..\Ecommerce.Domain.Core\Ecommerce.Domain.Core.csproj" />
-    <ProjectReference Include="..\Ecommerce.Domain.Entity\Ecommerce.Domain.Entity.csproj" />
-    <ProjectReference Include="..\Ecommerce.Domain.Interface\Ecommerce.Domain.Interface.csproj" />
-    <ProjectReference Include="..\Ecommerce.Infraestructure.Data\Ecommerce.Infraestructure.Data.csproj" />
-    <ProjectReference Include="..\Ecommerce.Infraestructure.Interface\Ecommerce.Infraestructure.Interface.csproj" />
-    <ProjectReference Include="..\Ecommerce.Infraestructure.Repository\Ecommerce.Infraestructure.Repository.csproj" />
-    <ProjectReference Include="..\Ecommerce.Transversal.Common\Ecommerce.Transversal.Common.csproj" />
-    <ProjectReference Include="..\Ecommerce.Transversal.Logging\Ecommerce.Transversal.Logging.csproj" />
-    <ProjectReference Include="..\Ecommerce.Transversal.Mapper\Ecommerce.Transversal.Mapper.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Ecommerce.Application.DTO\Ecommerce.Application.DTO.csproj" />
+		<ProjectReference Include="..\Ecommerce.Application.Interface\Ecommerce.Application.Interface.csproj" />
+		<ProjectReference Include="..\Ecommerce.Application.Main\Ecommerce.Application.Main.csproj" />
+		<ProjectReference Include="..\Ecommerce.Domain.Core\Ecommerce.Domain.Core.csproj" />
+		<ProjectReference Include="..\Ecommerce.Domain.Entity\Ecommerce.Domain.Entity.csproj" />
+		<ProjectReference Include="..\Ecommerce.Domain.Interface\Ecommerce.Domain.Interface.csproj" />
+		<ProjectReference Include="..\Ecommerce.Infraestructure.Data\Ecommerce.Infraestructure.Data.csproj" />
+		<ProjectReference Include="..\Ecommerce.Infraestructure.Interface\Ecommerce.Infraestructure.Interface.csproj" />
+		<ProjectReference Include="..\Ecommerce.Infraestructure.Repository\Ecommerce.Infraestructure.Repository.csproj" />
+		<ProjectReference Include="..\Ecommerce.Transversal.Common\Ecommerce.Transversal.Common.csproj" />
+		<ProjectReference Include="..\Ecommerce.Transversal.Logging\Ecommerce.Transversal.Logging.csproj" />
+		<ProjectReference Include="..\Ecommerce.Transversal.Mapper\Ecommerce.Transversal.Mapper.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="Ecommerce.Application.Tests" />
+	</ItemGroup>
 
 </Project>
