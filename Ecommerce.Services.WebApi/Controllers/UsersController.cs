@@ -30,7 +30,7 @@ namespace Ecommerce.Services.WebApi.Controllers
         public IActionResult Authenticate([FromBody] UsersDto authDto)
         {
             var response = _usersApplication.Authenticate(authDto.UserName, authDto.Password);
-            if (response.IsSucces = true)
+            if (response.IsSucces == true)
             {
                 if(response.Data != null)
                 {

@@ -31,20 +31,20 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.UseRouting().UseEndpoints(endpoints =>
+app.UseRouting();
+
+app.UseAuthorization();
+app.UseAuthorization();
+
+
+app.MapControllers();
+app.MapHealthChecksUI(options => options.AddCustomStylesheet("Modules/HealthChecks/Styles/dotnet.css"));
+app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
 {
-    endpoints.MapControllers();
-    endpoints.MapHealthChecksUI(options => options.AddCustomStylesheet("Modules/HealthChecks/Styles/dotnet.css"));
-    endpoints.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
-    {
-        Predicate = _ => true,
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
-    });
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
 });
 
-app.UseAuthentication();
-app.UseAuthorization();
 
 
 app.Run();

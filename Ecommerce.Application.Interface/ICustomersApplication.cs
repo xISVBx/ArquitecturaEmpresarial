@@ -12,6 +12,7 @@ namespace Ecommerce.Application.Interface
         Response<bool> Delete(string customerId);
         Response<CustomersDto> Get(string customerId);
         Response<IEnumerable<CustomersDto>> GetAll();
+        ResponsePagination<IEnumerable<CustomersDto>> GetAllWithPagination(int pageNumber, int pageSize);
         #endregion
         #region Metodos Asyncronos
         Task<Response<bool>> InsertAsync(CustomersDto customerDto);

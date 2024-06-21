@@ -118,6 +118,29 @@ namespace Ecommerce.Application.Main
             }
             return response;
         }
+        public ResponsePagination<IEnumerable<CustomersDto>> GetAllWithPagination(int pageNumber, int pageSize)
+        {
+            var response = new ResponsePagination<IEnumerable<CustomersDto>>();
+            try
+            {
+                var count = _customersDomain.Count();
+                var customers = _customersDomain.GetAllWithPagination(pageNumber, pageSize);
+                response.Data = _mapper.Map<IEnumerable<CustomersDto>>(customers);
+                
+                if(response.Data != null)
+                {
+                    response.PageNumber = pageNumber;
+                    response.TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+                    response.TotalCount = count;
+                    response.IsSucces = true;
+                    response.Message = "Consulta Paginada Exitosa!!!";
+                }
+            }catch(Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response ;
+        }
         #endregion
         #region Metodos Asyncronos
         public async Task<Response<bool>> InsertAsync(CustomersDto customerDto)
