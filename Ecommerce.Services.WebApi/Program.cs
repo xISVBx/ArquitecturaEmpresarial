@@ -3,6 +3,8 @@ using Ecommerce.Services.WebApi.Modules.Features;
 using Ecommerce.Services.WebApi.Modules.HealthChecks;
 using Ecommerce.Services.WebApi.Modules.Inyection;
 using Ecommerce.Services.WebApi.Modules.Mapper;
+using Ecommerce.Services.WebApi.Modules.RateLimiter;
+using Ecommerce.Services.WebApi.Modules.Redis;
 using Ecommerce.Services.WebApi.Modules.Swagger;
 using Ecommerce.Services.WebApi.Modules.Validator;
 using Ecommerce.Services.WebApi.Modules.Watchdog;
@@ -23,6 +25,9 @@ builder.Services.AddSwagger();
 builder.Services.AddValidators();
 builder.Services.AddHealthCheck(builder.Configuration);
 builder.Services.AddWatchDog(builder.Configuration);
+builder.Services.AddRedisCache(builder.Configuration);
+builder.Services.AddRatelimiting(builder.Configuration);
+
 var app = builder.Build();
 
 app.UseStaticFiles();
@@ -36,9 +41,12 @@ if (app.Environment.IsDevelopment())
 app.UseWatchDogExceptionLogger();
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseRateLimiter();
+
+app.UseEndpoints(endpoints => { });
 
 app.MapControllers();
 app.MapHealthChecksUI(options => options.AddCustomStylesheet("Modules/HealthChecks/Styles/dotnet.css"));

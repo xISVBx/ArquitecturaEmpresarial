@@ -30,6 +30,10 @@ namespace Ecommerce.Services.WebApi.Modules.Inyection
             services.AddScoped<IUsersDomain, UsersDomain>();
             services.AddScoped<IUsersRepository, UsersRepository>();
 
+            services.AddScoped<ICategoriesApplication, CategoriesApplication>();
+            services.AddScoped<ICategoriesDomain, CategoriesDomain>();
+            services.AddScoped<ICategoriesRepository, CategoriesRepository>();
+
             return services;
         }
     }

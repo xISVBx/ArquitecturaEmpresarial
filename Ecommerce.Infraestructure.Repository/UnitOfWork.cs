@@ -11,12 +11,14 @@ namespace Ecommerce.Infraestructure.Repository
         private readonly DapperContext _context;
         public ICustomersRepository CustomersRepository { get; }
         public IUsersRepository UsersRepository { get; }
-        public UnitOfWork(ICustomersRepository customersRepository, IUsersRepository usersRepository, DapperContext context)
+        public ICategoriesRepository CategoriesRepository {  get; }
+
+        public UnitOfWork(ICustomersRepository customersRepository, IUsersRepository usersRepository, DapperContext context, ICategoriesRepository categoriesRepository)
         {
             CustomersRepository = customersRepository;
             UsersRepository = usersRepository;
-
             _context = context;
+            CategoriesRepository = categoriesRepository;
         }
 
         public void Dispose()

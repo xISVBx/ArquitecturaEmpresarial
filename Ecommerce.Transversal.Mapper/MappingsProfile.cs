@@ -10,6 +10,7 @@ namespace Ecommerce.Transversal.Mapper
         {
             CreateMap<Customers, CustomersDto>().ReverseMap();
             CreateMap<Users, UsersDto>().ReverseMap();
+            CreateMap<Categories, CategoriesDto>().ReverseMap();
         }
     }
 }
