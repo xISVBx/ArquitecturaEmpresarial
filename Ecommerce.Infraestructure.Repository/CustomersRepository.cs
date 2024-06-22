@@ -83,10 +83,10 @@ namespace Ecommerce.Infraestructure.Repository
             var connection = _context.sqlConnection;
             var query = "CustomersListWithPagination";
             var parameters = new DynamicParameters();
-            parameters.Add("PageNumber", pageNumber);
-            parameters.Add("PageSize", pageSize);
+            parameters.Add("@PageNumber", pageNumber);
+            parameters.Add("@PageSize", pageSize);
 
-            var result = connection.Query<Customers>(query, transaction: _context.transaction, commandType: CommandType.StoredProcedure);
+            var result = connection.Query<Customers>(query, transaction: _context.transaction, param: parameters, commandType: CommandType.StoredProcedure);
             return result;
         }
 
@@ -162,14 +162,24 @@ namespace Ecommerce.Infraestructure.Repository
             var result = await connection.QueryAsync<Customers>(query, transaction: _context.transaction, commandType: CommandType.StoredProcedure);
             return result;
         }
-        public Task<IEnumerable<Customers>> GetAllWithPaginationAsync(int pageNumber, int pageSize)
+        public async Task<IEnumerable<Customers>> GetAllWithPaginationAsync(int pageNumber, int pageSize)
         {
-            throw new NotImplementedException();
+            var connection = _context.sqlConnection;
+            var query = "CustomersListWithPagination";
+            var parameters = new DynamicParameters();
+            parameters.Add("@PageNumber", pageNumber);
+            parameters.Add("@PageSize", pageSize);
+
+            var result = await connection.QueryAsync<Customers>(query, transaction: _context.transaction, param: parameters, commandType: CommandType.StoredProcedure);
+            return result;
         }
 
-        public Task<int> CountAsync()
+        public async Task<int> CountAsync()
         {
-            throw new NotImplementedException();
+            var connection = _context.sqlConnection;
+            var query = "SELECT COUNT(*) FROM Customers";
+            var count = await connection.ExecuteScalarAsync<int>(query, transaction: _context.transaction, commandType: CommandType.Text);
+            return count;
         }
         #endregion
     }

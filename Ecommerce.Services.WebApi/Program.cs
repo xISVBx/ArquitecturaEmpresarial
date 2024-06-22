@@ -5,7 +5,9 @@ using Ecommerce.Services.WebApi.Modules.Inyection;
 using Ecommerce.Services.WebApi.Modules.Mapper;
 using Ecommerce.Services.WebApi.Modules.Swagger;
 using Ecommerce.Services.WebApi.Modules.Validator;
+using Ecommerce.Services.WebApi.Modules.Watchdog;
 using HealthChecks.UI.Client;
+using WatchDog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +22,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddSwagger();
 builder.Services.AddValidators();
 builder.Services.AddHealthCheck(builder.Configuration);
-
+builder.Services.AddWatchDog(builder.Configuration);
 var app = builder.Build();
 
 app.UseStaticFiles();
@@ -31,6 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseWatchDogExceptionLogger();
 app.UseRouting();
 
 app.UseAuthorization();
@@ -45,7 +48,11 @@ app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
 });
 
-
+app.UseWatchDog(conf =>
+{
+    conf.WatchPageUsername = builder.Configuration["WatchDog:WatchPageUsername"];
+    conf.WatchPagePassword = builder.Configuration["WatchDog:WatchPagePassword"];
+});
 
 app.Run();
 

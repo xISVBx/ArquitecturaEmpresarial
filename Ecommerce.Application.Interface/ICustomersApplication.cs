@@ -20,6 +20,7 @@ namespace Ecommerce.Application.Interface
         Task<Response<bool>> DeleteAsync(string customerId);
         Task<Response<CustomersDto>> GetAsync(string customerId);
         Task<Response<IEnumerable<CustomersDto>>> GetAllAsync();
+        Task<ResponsePagination<IEnumerable<CustomersDto>>> GetAllWithPaginationAsync(int pageNumber, int pageSize);
         #endregion
     }
 }

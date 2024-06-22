@@ -60,6 +60,13 @@ namespace Ecommerce.Services.WebApi.Controllers
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }
+        [HttpGet("GetAllWithPagination")]
+        public IActionResult GetAllWithPagination([FromQuery] int pageNumber, int pageSize)
+        {
+            var response = _customerApplication.GetAllWithPagination(pageNumber, pageSize);
+            if (response.IsSucces) return Ok(response);
+            return BadRequest(response.Message);
+        }
         #endregion
         #region Metodos Asincronos
         [HttpPost("InsertAsync")]
@@ -102,6 +109,13 @@ namespace Ecommerce.Services.WebApi.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var response = await _customerApplication.GetAllAsync();
+            if (response.IsSucces) return Ok(response);
+            return BadRequest(response.Message);
+        }
+        [HttpGet("GetAllWithPaginationAsync")]
+        public async Task<IActionResult> GetAllWithPaginationAsync([FromQuery] int pageNumber, int pageSize)
+        {
+            var response = await _customerApplication.GetAllWithPaginationAsync(pageNumber, pageSize);
             if (response.IsSucces) return Ok(response);
             return BadRequest(response.Message);
         }

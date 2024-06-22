@@ -24,6 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\Ecommerce.Transversal.Logging\Ecommerce.Transversal.Logging.csproj" />
 		<ProjectReference Include="..\Ecommerce.Application.DTO\Ecommerce.Application.DTO.csproj" />
 		<ProjectReference Include="..\Ecommerce.Application.Interface\Ecommerce.Application.Interface.csproj" />
 		<ProjectReference Include="..\Ecommerce.Application.Main\Ecommerce.Application.Main.csproj" />
@@ -34,7 +35,6 @@
 		<ProjectReference Include="..\Ecommerce.Infraestructure.Interface\Ecommerce.Infraestructure.Interface.csproj" />
 		<ProjectReference Include="..\Ecommerce.Infraestructure.Repository\Ecommerce.Infraestructure.Repository.csproj" />
 		<ProjectReference Include="..\Ecommerce.Transversal.Common\Ecommerce.Transversal.Common.csproj" />
-		<ProjectReference Include="..\Ecommerce.Transversal.Logging\Ecommerce.Transversal.Logging.csproj" />
 		<ProjectReference Include="..\Ecommerce.Transversal.Mapper\Ecommerce.Transversal.Mapper.csproj" />
 	</ItemGroup>
 
